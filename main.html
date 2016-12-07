@@ -11,6 +11,54 @@
 
   <body>
 
+    <!--
+
+    Input Variables
+
+    radius (.3 - 15)
+    circle renditions (10 - 10000)
+    number of circles (1 - 4)
+    color ??
+
+    -->
+    <form>
+
+      Size of Radius(.3 - 15):<br>
+      <input type="number" id="iRadius" onchange="getFormInput()"> </input>
+      <br>
+      Number of Circle Renditions(10 - 10000):
+      <br>
+      <input type="number" id="iRenditions" onchange="getFormInput()"> </input>
+      <br>
+      Color 1:
+      <br>
+      <input type="text" id="color1" onchange="getFormInput()"> </input>
+      <br>
+      Color 2:
+      <br>
+      <input type="text" id="color2" onchange="getFormInput()"> </input>
+      <br>
+      Color 3:
+      <br>
+      <input type="text" id="color3" onchange="getFormInput()"> </input>
+      <br>
+      Color 4:
+      <br>
+      <input type="text" id="color4" onchange="getFormInput()"> </input>
+      <br>
+
+
+    </form>
+
+    <br>
+    <button onclick="generate()" style="display: block"> generate </button>
+    <br>
+    <button onclick="drawText('S.A.A.A.D.')"> Click this button for a
+      super suprise </button>
+    <br>
+    <br>
+
+
 
     <canvas id="area" height="500" width="700"> </canvas>
 
@@ -26,54 +74,77 @@
 
      col = 0;
 
+     var radiusInput;
+     var renditionsInput;
+     var color1;
+     var color2;
+     var color3;
+     var color4;
+
+     function getFormInput() {
+
+        radiusInput = document.getElementById("iRadius").value;
+        renditionsInput = document.getElementById("iRenditions").value;
+
+        color1 = document.getElementById("color1").value;
+        color2 = document.getElementById("color2").value;
+        color3 = document.getElementById("color3").value;
+        color4 = document.getElementById("color4").value;
+
+     }
+
+
      function drawCircle(rad){
-       this.radius = rad;
 
-       if(col == 0){
 
-         cont.beginPath();
-         cont.strokeStyle = "blue";
-         cont.arc(0 + this.radius,can.height - this.radius,
-           this.radius,0,2*Math.PI);
-         cont.stroke();
 
-       }
-       if(col == 1){
+         this.radius = rad;
 
-         cont.beginPath();
-         cont.strokeStyle = "red";
-         cont.arc(can.width - this.radius ,0 + this.radius ,
-           this.radius,0,2*Math.PI);
+         if(col == 0){
 
-         cont.stroke();
+           cont.beginPath();
+           cont.strokeStyle = color1;
+           cont.arc(0 + this.radius,can.height - this.radius,
+             this.radius,0,2*Math.PI);
+           cont.stroke();
 
-       }
-       if(col == 2){
+         }
+         if(col == 1){
 
-         cont.beginPath();
-         cont.strokeStyle = "yellow";
-         cont.arc(can.width - this.radius ,can.height - this.radius ,
-           this.radius,0,2*Math.PI);
+           cont.beginPath();
+           cont.strokeStyle = color2;
+           cont.arc(can.width - this.radius ,0 + this.radius ,
+             this.radius,0,2*Math.PI);
 
-         cont.stroke();
+           cont.stroke();
 
-       }
-      if(col == 3){
+         }
+         if(col == 2){
 
-         cont.beginPath();
-         cont.strokeStyle = "green";
-         cont.arc(0 + this.radius ,0 + this.radius ,
-           this.radius,0,2*Math.PI);
+           cont.beginPath();
+           cont.strokeStyle = color3;
+           cont.arc(can.width - this.radius ,can.height - this.radius ,
+             this.radius,0,2*Math.PI);
 
-         cont.stroke();
+           cont.stroke();
 
-       }
+         }
+        if(col == 3){
 
-       if(col < 3){
-        col++;
-      }else{
-        col = 0;
-      }
+           cont.beginPath();
+           cont.strokeStyle = color4;
+           cont.arc(0 + this.radius ,0 + this.radius ,
+             this.radius,0,2*Math.PI);
+
+           cont.stroke();
+
+         }
+
+         if(col < 3){
+          col++;
+        }else{
+          col = 0;
+        }
 
 
      }
@@ -85,14 +156,24 @@
        cont.fillText(txt, 100, 100);
      }
 
+     function generate() {
 
-     for(var x = 1; x <= 1000; x++){
+      cont.fillStyle = "#FFFFFF";
+     	cont.fillRect(0, 0, can.width, can.height);
 
-       drawCircle(x*.3);
+      col = 0;
+
+       for(var x = 1; x <= renditionsInput ; x++){
+
+         drawCircle(x * radiusInput);
 
 
 
-     };
+     }
+
+   }
+
+
 
      // drawText("Evan is a flaming homo");
 
@@ -102,8 +183,7 @@
 
      </script>
 
-     <button onclick="drawText('Evan is a flaming homo')"> Click this button for a
-       super suprise </button>
+
 
   </body>
 
