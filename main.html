@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    <!--  -->
+    <link rel="stylesheet" type="text/css" href="myStyle.css">
+
+  </head>
+
+
+  <body>
+
+
+    <canvas id="area" height="500" width="700"> </canvas>
+
+
+
+
+
+
+     <script>
+
+     var can = document.getElementById("area");
+     var cont = can.getContext("2d");
+
+     col = 0;
+
+     function drawCircle(rad){
+       this.radius = rad;
+
+       if(col == 0){
+
+         cont.beginPath();
+         cont.strokeStyle = "blue";
+         cont.arc(0 + this.radius,can.height - this.radius,
+           this.radius,0,2*Math.PI);
+         cont.stroke();
+
+       }
+       if(col == 1){
+
+         cont.beginPath();
+         cont.strokeStyle = "red";
+         cont.arc(can.width - this.radius ,0 + this.radius ,
+           this.radius,0,2*Math.PI);
+
+         cont.stroke();
+
+       }
+       if(col == 2){
+
+         cont.beginPath();
+         cont.strokeStyle = "yellow";
+         cont.arc(can.width - this.radius ,can.height - this.radius ,
+           this.radius,0,2*Math.PI);
+
+         cont.stroke();
+
+       }
+      if(col == 3){
+
+         cont.beginPath();
+         cont.strokeStyle = "green";
+         cont.arc(0 + this.radius ,0 + this.radius ,
+           this.radius,0,2*Math.PI);
+
+         cont.stroke();
+
+       }
+
+       if(col < 3){
+        col++;
+      }else{
+        col = 0;
+      }
+
+
+     }
+
+     function drawText(txt){
+
+       cont.font = "50px Georgia";
+       cont.fillStyle = "white";
+       cont.fillText(txt, 100, 100);
+     }
+
+
+     for(var x = 1; x <= 1000; x++){
+
+       drawCircle(x*.3);
+
+
+
+     };
+
+     // drawText("Evan is a flaming homo");
+
+
+
+
+
+     </script>
+
+     <button onclick="drawText('Evan is a flaming homo')"> Click this button for a
+       super suprise </button>
+
+  </body>
+
+
+
+
+
+
+
+</html>
