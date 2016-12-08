@@ -1,3 +1,6 @@
+
+//script
+
 var can = document.getElementById("area");
 var cont = can.getContext("2d");
 
