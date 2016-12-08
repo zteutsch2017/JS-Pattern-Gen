@@ -22,49 +22,95 @@
 
     -->
     <form>
-
-      Size of Radius(.3 - 15):<br>
-      <input type="number" id="iRadius" onchange="getFormInput()"> </input>
+      Specify Your Pattern
       <br>
+      <br>
+
+      Size of Radius(.3 - 15):
+      <br>
+      <input type="number" id="iRadius" onchange="getFormInput()" value="5">
+      </input>
+      <br>
+
       Number of Circle Renditions(10 - 10000):
       <br>
-      <input type="number" id="iRenditions" onchange="getFormInput()"> </input>
+      <input type="number" id="iRenditions" onchange="getFormInput()"
+      value="500"> </input>
       <br>
+
       Color 1:
       <br>
-      <input type="text" id="color1" onchange="getFormInput()"> </input>
+      <input type="text" id="color1" onchange="getFormInput()" value="black">
+      </input>
       <br>
+
       Color 2:
       <br>
-      <input type="text" id="color2" onchange="getFormInput()"> </input>
+      <input type="text" id="color2" onchange="getFormInput()" value="black">
+      </input>
       <br>
+
       Color 3:
       <br>
-      <input type="text" id="color3" onchange="getFormInput()"> </input>
+      <input type="text" id="color3" onchange="getFormInput()" value="black">
+      </input>
       <br>
+
       Color 4:
       <br>
-      <input type="text" id="color4" onchange="getFormInput()"> </input>
+      <input type="text" id="color4" onchange="getFormInput()" value="black">
+      </input>
       <br>
 
 
     </form>
 
     <br>
-    <button onclick="generate()" style="display: block"> generate </button>
-    <br>
-    <button onclick="drawText('S.A.A.A.D.')"> Click this button for a
-      super suprise </button>
-    <br>
+    <button onclick="generate()" style="display: block"> Generate Pattern
+    </button>
     <br>
 
+    <form>
+
+      Want some text?
+      <br>
+      <br>
+
+      Text:
+      <br>
+      <input type="text" id="textInput" onchange="getTextInput()"
+      value="Type your text here..."> </input>
+      <br>
+
+      X-Coordinate of Text:
+      <br>
+      <input type="number" id="xCoordInput" onchange="getTextInput()"
+      value="100"> </input>
+      <br>
+
+      Y-Coordinate of Text:
+      <br>
+      <input type="number" id="yCoordInput" onchange="getTextInput()"
+      value="100"> </input>
+      <br>
+
+      Text Color:
+      <br>
+      <input type="text" id="textColorInput" onchange="getTextInput()"
+      value="white"> </input>
+      <br>
+      <br>
+
+    </form>
+
+
+
+    <button onclick="drawText(message)">  Generate Text </button>
+    <br>
+    <br>
 
 
     <canvas id="area" height="500" width="700"> </canvas>
-
-
-
-
 
 
      <script>
@@ -74,12 +120,17 @@
 
      col = 0;
 
-     var radiusInput;
-     var renditionsInput;
-     var color1;
-     var color2;
-     var color3;
-     var color4;
+     var radiusInput = 5;
+     var renditionsInput = 500;
+     var color1 = "black";
+     var color2 = "black";
+     var color3 = "black";
+     var color4 = "black";
+
+     var message = "Type your text here..."
+     var txtX = 100;
+     var txtY = can.height - 100;
+     var textColor = "white";
 
      function getFormInput() {
 
@@ -93,10 +144,18 @@
 
      }
 
+     function getTextInput(){
+
+       message = document.getElementById("textInput").value;
+       txtX = document.getElementById("xCoordInput").value;
+       txtY = can.height - document.getElementById("yCoordInput").value;
+       textColor = document.getElementById("textColorInput").value;
+
+
+
+     }
 
      function drawCircle(rad){
-
-
 
          this.radius = rad;
 
@@ -151,9 +210,11 @@
 
      function drawText(txt){
 
+       generate();
+
        cont.font = "50px Georgia";
-       cont.fillStyle = "white";
-       cont.fillText(txt, 100, 100);
+       cont.fillStyle = textColor;
+       cont.fillText(txt, txtX, txtY);
      }
 
      function generate() {
@@ -172,13 +233,6 @@
      }
 
    }
-
-
-
-     // drawText("Evan is a flaming homo");
-
-
-
 
 
      </script>
