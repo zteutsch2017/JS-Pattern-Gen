@@ -32,6 +32,28 @@ function getFormInput() {
    color3 = document.getElementById("color3").value;
    color4 = document.getElementById("color4").value;
 
+   if(radiusInput < .1){
+     radiusInput = .1;
+     document.getElementById("iRadius").value = .1;
+
+   }
+
+   if(radiusInput > 15){
+     radiusInput = 15;
+     document.getElementById("iRadius").value = 15;
+   }
+
+   if(renditionsInput < 10){
+     renditionsInput = 10;
+     document.getElementById("iRenditions").value = 10;
+   }
+
+   if(renditionsInput > 2750){
+     renditionsInput = 2750;
+     document.getElementById("iRenditions").value = 2750;
+   }
+
+
 }
 
 //function called when form is edited, updates parameters for text
@@ -43,7 +65,15 @@ function getTextInput(){
   txtY = can.height - document.getElementById("yCoordInput").value;
   textColor = document.getElementById("textColorInput").value;
 
+  if(txtY > 500){
+    txtY = 100;
+    document.getElementById("yCoordInput").value = 100;
+  }
 
+  if(txtX > 700){
+    txtX = 100;
+    document.getElementById("xCoordInput").value = 100;
+  }
 
 }
 
@@ -126,8 +156,6 @@ function generate() {
   for(var x = 1; x <= renditionsInput ; x++){
 
     drawCircle(x * radiusInput);
-
-
 
 }
 
