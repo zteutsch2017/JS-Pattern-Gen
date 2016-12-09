@@ -1,5 +1,34 @@
+
+/* Pattern gen css */
+
+h1 {
+  font-family: Impact;
+  font-size: 33px;
+
+  border-top: solid darkgrey;
+  border-bottom: solid darkgrey;
+}
+
+div.subhead {
+  font-family: Impact;
+}
+
 #area {
-
  border: solid;
+}
 
+#table1 {
+  border: dotted;
+  border-radius: 10px;
+  border-color: grey;
+
+  margin-bottom: 20px;
+}
+
+#td1 {
+  padding-right: 10px;
+}
+
+#td2 {
+  padding-left: 10px;
 }
